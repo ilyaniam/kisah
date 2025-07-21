@@ -8,11 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Audio autoplay + loop -->
-  <audio id="bgAudio" autoplay loop>
+
+  <!-- Audio dimulai setelah klik pertama -->
+  <audio id="bgAudio" loop>
     <source src="audio/fine-line.mp3" type="audio/mpeg" />
     Browser kamu tidak mendukung audio.
   </audio>
+
+  <script>
+    document.addEventListener('click', function () {
+      const audio = document.getElementById('bgAudio');
+      if (audio.paused) {
+        audio.play().catch((e) => {
+          console.log("Autoplay gagal:", e);
+        });
+      }
+    }, { once: true });
+  </script>
 
   <div class="container">
     <h1 class="main-heading">Halo, Sayang</h1>
